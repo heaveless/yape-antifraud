@@ -4,6 +4,10 @@ import { MicroserviceOptions, Transport } from '@nestjs/microservices';
 import { ConfigService } from '@nestjs/config';
 import { ConsoleLogger } from '@nestjs/common';
 
+if (process.env.NODE_ENV === 'dev') {
+  require('dotenv').config();
+}
+
 async function bootstrap() {
   const app = await NestFactory.create(AntifraudModule, {
     logger: new ConsoleLogger({
@@ -20,7 +24,7 @@ async function bootstrap() {
     options: {
       client: {
         clientId: 'ms-antifraud',
-        brokers: config.get<Array<string>>('antifraud.KAFKA_BROKERS', [])
+        brokers: config.getOrThrow<Array<string>>('antifraud.KAFKA_BROKERS')
       },
       consumer: {
         groupId: 'gp-antifraud-transaction',

@@ -12,7 +12,7 @@ import secrets from './config/secrets.config';
       isGlobal: true,
       load: [secrets]
     }),
-    DynamooseModule.forRoot(),
+    DynamooseModule.forRoot({ aws: { region: 'us-east-1' } }),
     TransactionModule
   ],
   controllers: [

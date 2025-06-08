@@ -7,6 +7,9 @@ export const TransactionSchema = new Schema({
     sourceAccountId: String,
     destinationAccountId: String,
     amount: Number,
-    createdAt: Number,
-    updatedAt: Number
+    createdAt: String,
+    updatedAt: {
+        type: String,
+        required: false
+    }
 });

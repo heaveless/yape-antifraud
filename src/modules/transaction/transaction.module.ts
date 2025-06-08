@@ -14,6 +14,8 @@ import { ConfigService } from "@nestjs/config";
                 schema: TransactionSchema,
                 options: {
                     tableName: configService.get<string>('transaction.DYNAMO_TABLE_TRANSACTION'),
+                    create: false,
+                    waitForActive: false
                 },
             }),
             inject: [ConfigService]
