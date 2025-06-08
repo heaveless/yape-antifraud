@@ -1,0 +1,1 @@
+export const INJECT_TRANSACTION_MODEL = 'inject:transaction:model';
