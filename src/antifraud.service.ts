@@ -13,7 +13,7 @@ export class AntifraudService {
 
   check(args: AntifraudArgs): Promise<AntifraudReturn> {
     const { amount, ...transaction } = args;
-    const maxAmount = this.configService.get<number>('', 0);
+    const maxAmount = this.configService.get<number>('antifraud.MAX_AMOUNT_ALERT', 0);
 
     let statusId = TransactionStatus.REJECTED;
     if (amount < maxAmount) {
